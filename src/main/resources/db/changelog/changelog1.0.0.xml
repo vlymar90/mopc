@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+        <changeSet id="create_bd" author="v.lymar">
+            <sql>
+                create schema if not exists "mopc";
+
+                    create table mopc."apparatus"
+                    (
+                        "id" bigserial not null primary key,
+                        "name" varchar(256),
+                        "serial" varchar(256) not null,
+                        "invert" varchar(256),
+                        "working" varchar,
+                        "comment" varchar
+                    );
+
+                    create table mopc."cuveses" (
+                        "id" bigserial not null primary key,
+                        "name" varchar(256),
+                        "serial" varchar(256) not null,
+                        "invert" varchar(256),
+                        "working" varchar,
+                        "comment" varchar
+                    );
+
+                    create table mopc."infusomat" (
+                        "id" bigserial not null primary key,
+                        "name" varchar(256),
+                        "serial" varchar(256) not null,
+                        "invert" varchar(256),
+                        "working" varchar,
+                        "comment" varchar
+                    );
+
+                    create table mopc."others" (
+                        "id" bigserial not null primary key,
+                        "name" varchar(256),
+                        "serial" varchar(256) not null,
+                        "invert" varchar(256),
+                        "working" varchar,
+                        "comment" varchar
+                    );
+
+            </sql>
+        </changeSet>
+</databaseChangeLog>
+

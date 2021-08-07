@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/mopc
+    username: user
+    password: user
+  liquibase:
+    change-log: classpath:db/changelog-master.xml
+
+server:
+  port: 8070
