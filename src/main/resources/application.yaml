@@ -1,9 +1,11 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/mopc
-    username: user
-    password: user
+    url: postgres://gtcgepertfmaxu:8f1f323385e8c2363c12f7e86e85d2ed218342b8228c980d4933fa2d65cedb0c@ec2-54-78-36-245.eu-west-1.compute.amazonaws.com:5432/da3cmcmkjstqg3
+
+    username: gtcgepertfmaxu
+    password: 8f1f323385e8c2363c12f7e86e85d2ed218342b8228c980d4933fa2d65cedb0c
+
   liquibase:
     change-log: classpath:db/changelog-master.xml
 
