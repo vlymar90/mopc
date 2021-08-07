@@ -14,7 +14,7 @@
     <name>mopc</name>
     <description>mopc</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>16</java.version>
         <vaadin.version>14.6.5</vaadin.version>
     </properties>
     <dependencies>
