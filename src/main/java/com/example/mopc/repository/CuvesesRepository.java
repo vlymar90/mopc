@@ -8,7 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CuvesesRepository extends JpaRepository<Cuveses, Long> {
-    List<Cuveses> findAllBySerialContaining(String serial);
-    List<Cuveses> getAllByWorking(String work);
+public interface CuvesesRepository extends BaseEntityRepository<Cuveses, Long> {
 }

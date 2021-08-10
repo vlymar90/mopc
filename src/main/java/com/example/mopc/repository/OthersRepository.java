@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface OthersRepository extends JpaRepository<Others,Long> {
-    List<Others> findAllBySerialContaining(String serial);
-    List<Others> getAllByWorking(String work);
+public interface OthersRepository extends BaseEntityRepository<Others,Long> {
+
 }

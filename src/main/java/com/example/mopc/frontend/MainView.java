@@ -4,10 +4,10 @@ import com.example.mopc.entity.Apparatus;
 import com.example.mopc.entity.Cuveses;
 import com.example.mopc.entity.Infusomat;
 import com.example.mopc.entity.Others;
-import com.example.mopc.service.ApparatusService;
-import com.example.mopc.service.CuvesesService;
-import com.example.mopc.service.InfusomatService;
-import com.example.mopc.service.OthersService;
+import com.example.mopc.repository.ApparatusRepository;
+import com.example.mopc.repository.CuvesesRepository;
+import com.example.mopc.repository.InfusomatRepository;
+import com.example.mopc.repository.OthersRepository;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.Unit;
@@ -33,13 +33,14 @@ public class MainView extends VerticalLayout {
     private TextField invertedNumber;
     private ComboBox<String> isWorked;
     private TextArea comment;
-    private ApparatusService apparatusService;
-    private CuvesesService cuvesesService;
-    private InfusomatService infusomatService;
-    private OthersService othersService;
+    private ApparatusRepository apparatusService;
+    private CuvesesRepository cuvesesService;
+    private InfusomatRepository infusomatService;
+    private OthersRepository othersService;
+
     private Authentication authentication;
-    MainView(ApparatusService apparatusService, CuvesesService cuvesesService,
-             InfusomatService infusomatService, OthersService othersService) {
+    MainView(ApparatusRepository apparatusService, CuvesesRepository cuvesesService,
+             InfusomatRepository infusomatService, OthersRepository othersService) {
         this.authentication = SecurityContextHolder.getContext().getAuthentication();
         this.apparatusService = apparatusService;
         this.cuvesesService = cuvesesService;
@@ -84,18 +85,22 @@ public class MainView extends VerticalLayout {
     private HorizontalLayout initLink() {
         HorizontalLayout hl = new HorizontalLayout();
         Button buttonApparatus = new Button("Аппараты ИВЛ и SiPap", item -> {
+            new ApparatusView(apparatusService, authentication, "Аппараты ИВЛ и SiPap");
             UI.getCurrent().navigate("apparatus");
         });
 
         Button buttonCuveses = new Button("Кувезы и Системы", item -> {
+            new CuvesesView(cuvesesService,authentication, "Кувезы и Системы");
             UI.getCurrent().navigate("cuveses");
         });
 
         Button buttonInfus = new Button("Инфузоматы", item -> {
+            new InfusomatView(infusomatService, authentication, "Инфузоматы");
             UI.getCurrent().navigate("infusomat");
         });
 
         Button buttonOthers = new Button("Другое", item -> {
+            new OthersView(othersService, authentication, "Остальное");
             UI.getCurrent().navigate("others");
         });
 
@@ -117,14 +122,15 @@ public class MainView extends VerticalLayout {
                 Notification.show("Введите серийный номер");
                 return;
             }
+
             switch (labelComboBox.getValue()) {
-                case "Дыхательная аппаратура" : apparatusService.addElement(new Apparatus(name.getValue(), serialNumber.getValue(),
+                case "Дыхательная аппаратура" : apparatusService.save(new Apparatus(name.getValue(), serialNumber.getValue(),
                         invertedNumber.getValue(), isWorked.getValue(), comment.getEmptyValue())); break;
-                case "Системы и Кювезы" : cuvesesService.addElement(new Cuveses(name.getValue(), serialNumber.getValue(),
+                case "Системы и Кювезы" : cuvesesService.save(new Cuveses(name.getValue(), serialNumber.getValue(),
                         invertedNumber.getValue(), isWorked.getValue(), comment.getEmptyValue())); break;
-                case "Инфузоматы" : infusomatService.addElement(new Infusomat(name.getValue(), serialNumber.getValue(),
+                case "Инфузоматы" : infusomatService.save(new Infusomat(name.getValue(), serialNumber.getValue(),
                         invertedNumber.getValue(), isWorked.getValue(), comment.getEmptyValue())); break;
-                case "стальное" : othersService.addElement(new Others(name.getValue(), serialNumber.getValue(),
+                case "стальное" : othersService.save(new Others(name.getValue(), serialNumber.getValue(),
                         invertedNumber.getValue(), isWorked.getValue(), comment.getEmptyValue())); break;
             }
 

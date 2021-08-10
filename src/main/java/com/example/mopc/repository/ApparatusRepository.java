@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface ApparatusRepository extends JpaRepository<Apparatus, Long> {
-    List<Apparatus> findAllBySerialContaining(String serial);
-    List<Apparatus> getAllByWorking(String work);
+public interface ApparatusRepository extends BaseEntityRepository<Apparatus, Long> {
+
 }

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface InfusomatRepository extends JpaRepository<Infusomat, Long> {
-    List<Infusomat> findAllBySerialContaining(String serial);
-    List<Infusomat> getAllByWorking(String work);
+public interface InfusomatRepository extends BaseEntityRepository<Infusomat, Long> {
+
 }
