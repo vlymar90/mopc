@@ -85,22 +85,22 @@ public class MainView extends VerticalLayout {
     private HorizontalLayout initLink() {
         HorizontalLayout hl = new HorizontalLayout();
         Button buttonApparatus = new Button("Аппараты ИВЛ и SiPap", item -> {
-            new ApparatusView(apparatusService, authentication, "Аппараты ИВЛ и SiPap");
+            new ApparatusView(apparatusService);
             UI.getCurrent().navigate("apparatus");
         });
 
         Button buttonCuveses = new Button("Кувезы и Системы", item -> {
-            new CuvesesView(cuvesesService,authentication, "Кувезы и Системы");
+            new CuvesesView(cuvesesService);
             UI.getCurrent().navigate("cuveses");
         });
 
         Button buttonInfus = new Button("Инфузоматы", item -> {
-            new InfusomatView(infusomatService, authentication, "Инфузоматы");
+            new InfusomatView(infusomatService);
             UI.getCurrent().navigate("infusomat");
         });
 
         Button buttonOthers = new Button("Другое", item -> {
-            new OthersView(othersService, authentication, "Остальное");
+            new OthersView(othersService);
             UI.getCurrent().navigate("others");
         });
 

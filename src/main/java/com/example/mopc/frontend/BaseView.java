@@ -17,6 +17,7 @@ import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.provider.ListDataProvider;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +31,14 @@ public abstract class BaseView extends VerticalLayout {
     private Authentication authentication;
     private String nameView;
 
-    BaseView(BaseEntityRepository baseEntityRepository, Authentication authentication,
+    BaseView(BaseEntityRepository baseEntityRepository,
              String nameView) {
         setSizeFull();
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
         this.baseEntityRepository = baseEntityRepository;
-        this.authentication = authentication;
+        this.authentication = SecurityContextHolder.getContext().getAuthentication();
+        this.nameView = nameView;
         initView();
     }
 
