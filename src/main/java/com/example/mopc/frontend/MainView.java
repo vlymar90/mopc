@@ -124,7 +124,7 @@ public class MainView extends VerticalLayout {
                         invertedNumber.getValue(), isWorked.getValue(), comment.getEmptyValue())); break;
                 case "Инфузоматы" : infusomatService.addElement(new Infusomat(name.getValue(), serialNumber.getValue(),
                         invertedNumber.getValue(), isWorked.getValue(), comment.getEmptyValue())); break;
-                case "стальное" : othersService.addElement(new Others(name.getValue(), serialNumber.getValue(),
+                case "Остальное" : othersService.addElement(new Others(name.getValue(), serialNumber.getValue(),
                         invertedNumber.getValue(), isWorked.getValue(), comment.getEmptyValue())); break;
             }
 
